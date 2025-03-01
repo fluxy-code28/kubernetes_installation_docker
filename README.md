@@ -123,7 +123,7 @@ sudo sysctl --system
 > Disable swap on controlplane and dataplane nodes
 
 ```bash
-sudo swappff -a
+sudo swapoff -a
 ```
 
 ```bash
