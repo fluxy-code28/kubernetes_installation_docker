@@ -247,7 +247,8 @@ service/k8s-dash-svc                           NodePort    10.110.85.135   <none
 Create a service account and generate a token:
 ```bash
    nano k8s-dash.yaml
-```    
+```
+```bash
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -266,7 +267,7 @@ subjects:
 - kind: ServiceAccount
   name: widhi
   namespace: kube-system
-   
+```  
 10. Generate the token:    
      kubectl create token widhi -n kube-system
 
