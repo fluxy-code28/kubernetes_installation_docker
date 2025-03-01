@@ -209,3 +209,65 @@ kubectl apply -f metrics-server.yaml
 cd
 rm -rf kubernetes_installation_docker/
 ```
+
+### Installing Dashboard
+
+1. *Installing Helm:*
+Download and install Helm with the following commands:
+```bash
+     curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+     chmod +x get_helm.sh
+     ./get_helm.sh
+     helm   
+```
+3. *Adding the Kubernetes Dashboard Helm Repository:*
+Add the repository and verify it:
+```bash   
+     helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/
+     helm repo list    
+```
+5. *Installing Kubernetes Dashboard Using Helm:*
+Install it in the `kubernetes-dashboard` namespace:
+```bash     
+     helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --create-namespace --namespace kubernetes-dashboard
+     kubectl get pods,svc -n kubernetes-dashboard  
+```
+7. *Accessing the Dashboard:*
+Expose the dashboard using a NodePort:
+```bash      
+     kubectl expose deployment kubernetes-dashboard-kong --name k8s-dash-svc --type NodePort --port 443 --target-port 8443 -n kubernetes-dashboard
+```
+run: kubectl get pods,svc -n kubernetes-dashboard
+use this port to access the dashboard from phy node IP: 
+....
+service/k8s-dash-svc                           NodePort    10.110.85.135   <none>        443:30346/TCP   23s
+
+
+9. *Generating a Token for Login:*
+Create a service account and generate a token:
+```bash
+   nano k8s-dash.yaml
+```    
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: widhi
+  namespace: kube-system
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: widhi-admin
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: widhi
+  namespace: kube-system
+   
+10. Generate the token:    
+     kubectl create token widhi -n kube-system
+
+
