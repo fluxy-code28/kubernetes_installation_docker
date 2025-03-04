@@ -8,6 +8,11 @@ Get the detailed information about the installation from the below-mentioned web
 
 ### Set up the Docker and Kubernetes repositories:
 
+### requirements
+1. Ubuntu machines as Master and Worker ( build on VM using Bridge Adapter) minimal 2 machines: 1 Master and 1 Worker
+2. 
+
+
 > Download the GPG key for docker
 
 ```bash
