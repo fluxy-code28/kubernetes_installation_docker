@@ -254,6 +254,7 @@ Create a service account and generate a token:
 ```bash
    nano k8s-dash.yaml
 ```
+
 ```bash
 apiVersion: v1
 kind: ServiceAccount
@@ -273,7 +274,11 @@ subjects:
 - kind: ServiceAccount
   name: widhi
   namespace: kube-system
-```  
+```
+then run:
+```bash
+kubectl apply -f k8s-dash.yaml
+```
 10. Generate the token:    
      kubectl create token widhi -n kube-system
 
