@@ -8,19 +8,29 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     
-    document.getElementById('loginForm').addEventListener('submit', function(e) {
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
         e.preventDefault();
         
         const username = document.getElementById('username').value;
+        const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
         const messageDiv = document.getElementById('message');
         
-        fetch('/login', {
+        // Validate passwords match
+        if (password !== confirmPassword) {
+            messageDiv.style.display = 'block';
+            messageDiv.className = 'error';
+            messageDiv.textContent = 'Passwords do not match';
+            return;
+        }
+        
+        fetch('/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ username, password }),
+            body: JSON.stringify({ username, email, password }),
         })
         .then(response => response.json())
         .then(data => {
@@ -30,10 +40,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 messageDiv.className = 'success';
                 messageDiv.textContent = data.message;
                 
-                // Redirect to dashboard after successful login
+                // Redirect to login page after successful registration
                 setTimeout(() => {
-                    window.location.href = 'dashboard.html';
-                }, 1000);
+                    window.location.href = 'index.html';
+                }, 2000);
             } else {
                 messageDiv.className = 'error';
                 messageDiv.textContent = data.message;
@@ -47,4 +57,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-

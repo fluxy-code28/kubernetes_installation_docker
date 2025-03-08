@@ -1,4 +1,3 @@
-
 #### app/Dockerfile
 FROM node:16-alpine
 
@@ -9,6 +8,9 @@ COPY package*.json ./
 RUN npm install
 
 COPY . .
+
+# Create uploads directory
+RUN mkdir -p ./public/uploads
 
 EXPOSE 3000
 
