@@ -19,40 +19,7 @@ kubectl delete pv mysql-pv
 
 # Delete secrets
 kubectl delete secret mysql-secret
-# Navigate to app directory
-cd app
-
-# Build Docker image
-docker build -t login-app:latest .
-
-# Save Docker image as TAR file for distribution to worker nodes
-docker save login-app:latest > login-app.tar
-
-# Transfer the image to all nodes in your cluster (if they don't share images)
-# For example:
-# scp login-app.tar user@worker1:/home/user/
-# scp login-app.tar user@worker2:/home/user/
-
-# Load the image on all worker nodes
-# On each worker node:
-docker load < login-app.tar# Navigate to app directory
-cd app
-
-# Build Docker image
-docker build -t login-app:latest .
-
-# Save Docker image as TAR file for distribution to worker nodes
-docker save login-app:latest > login-app.tar
-
-# Transfer the image to all nodes in your cluster (if they don't share images)
-# For example:
-# scp login-app.tar user@worker1:/home/user/
-# scp login-app.tar user@worker2:/home/user/
-
-# Load the image on all worker nodes
-# On each worker node:
-docker load < login-app.tar
-
+```
 ## 2. Build and Load Docker Image
 
 Navigate to the app directory and build the Docker image:
