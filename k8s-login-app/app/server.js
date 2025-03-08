@@ -52,6 +52,8 @@ db.connect(err => {
   }
   console.log('Connected to database');
   
+  db.query(`SET FOREIGN_KEY_CHECKS=0;`);
+  
   // Create users table if it doesn't exist
   db.query(`
     CREATE TABLE IF NOT EXISTS users (
@@ -74,6 +76,8 @@ db.connect(err => {
       FOREIGN KEY (user_id) REFERENCES users(id)
     )
   `);
+  
+  db.query(`SET FOREIGN_KEY_CHECKS=1;`);
   
   // Insert a test user
   db.query(`

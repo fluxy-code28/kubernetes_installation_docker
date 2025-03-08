@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
             if (data.authenticated) {
                 window.location.href = 'dashboard.html';
             }
+        })
+        .catch(error => {
+            console.error('Error checking auth status:', error);
         });
     
     document.getElementById('loginForm').addEventListener('submit', function(e) {
