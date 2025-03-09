@@ -22,6 +22,9 @@ kubectl delete secret mysql-secret
 ```
 ## 2. Build and Load Docker Image
 
+```bash
+ git clone https://github.com/Widhi-yahya/kubernetes_installation_docker.git
+```
 Navigate to the app directory and build the Docker image:
 
 ```bash
