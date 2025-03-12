@@ -137,7 +137,7 @@ sudo vim /etc/fstab
 # comment the line which starts with **swap.img**.
 ```
 
-### On the Control Plane server
+### On the Control Plane server (Master node)
 
 > Initialize the cluster by passing the cidr value and the value will depend on the type of network CLI you choose.
 
@@ -185,7 +185,7 @@ kubectl create -f custom-resources.yaml
 kubectl get nodes
 ```
 
-### On each of Data plane node
+### On each of Data plane node (Worker node)
 
 > Joining the node to the cluster:
 
