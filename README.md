@@ -148,7 +148,7 @@ sudo vim /etc/fstab
 # Make sure to copy the join command
 sudo kubeadm init --apiserver-advertise-address=<control_plane_ip> --cri-socket unix:///var/run/cri-dockerd.sock  --pod-network-cidr=192.168.0.0/16
 
-# Use below command if the node network is 192.168.x.x
+# Or Use below command if the node network is not 192.168.x.x
 sudo kubeadm init --apiserver-advertise-address=<control_plane_ip> --cri-socket unix:///var/run/cri-dockerd.sock  --pod-network-cidr=10.244.0.0/16
 
 # Copy your join command and keep it safe.
