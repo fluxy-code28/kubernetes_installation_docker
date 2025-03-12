@@ -206,7 +206,7 @@ sudo kubeadm join $controller_private_ip:6443 --token $token --discovery-token-c
 kubeadm token create --print-join-command
 ```
 
-### To install metrics server
+### To install metrics server (Master node)
 
 ```bash
 git clone https://github.com/mialeevs/kubernetes_installation_docker.git
@@ -216,7 +216,7 @@ cd
 rm -rf kubernetes_installation_docker/
 ```
 
-### Installing Dashboard
+### Installing Dashboard (Master node)
 
 1. *Installing Helm:*
 Download and install Helm with the following commands:
