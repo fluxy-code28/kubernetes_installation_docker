@@ -13,6 +13,7 @@ Get the detailed information about the installation from the below-mentioned web
 2. Networking uses local network (FILKOM)
 
 
+### Docker Installation
 
 > Download the GPG key for docker
 
@@ -37,6 +38,8 @@ sudo apt install git wget curl socat -y
 sudo apt install -y docker-ce
 
 ```
+
+### cri-dockerd Installation
 
 **To install cri-dockerd for Docker support**
 
@@ -71,6 +74,8 @@ sudo systemctl enable cri-docker.service
 sudo systemctl enable --now cri-docker.socket
 
 ```
+
+### Kubernetes Installation
 
 > Add the GPG key for kubernetes
 
@@ -137,7 +142,9 @@ sudo vim /etc/fstab
 # comment the line which starts with **swap.img**.
 ```
 
-### On the Control Plane server (Master node)
+### Master Node Configuration
+
+On the Control Plane server (Master node)
 
 > Initialize the cluster by passing the cidr value and the value will depend on the type of network CLI you choose.
 
@@ -185,7 +192,9 @@ kubectl create -f custom-resources.yaml
 kubectl get nodes
 ```
 
-### On each of Data plane node (Worker node)
+### Worker Node Configuration
+
+On each of Data plane node (Worker node)
 
 > Joining the node to the cluster:
 
