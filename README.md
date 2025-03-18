@@ -27,6 +27,13 @@ gpg --no-default-keyring --keyring ./docker.gpg --export > ./docker-archive-keyr
 sudo mv ./docker-archive-keyring.gpg /etc/apt/trusted.gpg.d/
 ```
 
+**Penjelasan**
+- wget -O - → Mengunduh GPG key dari server Docker.
+- > ./docker.key → Menyimpan output ke file docker.key.
+- Mengimpor kunci GPG ke keyring khusus (docker.gpg).
+- Mengekspor kunci yang sudah diimpor ke dalam file docker-archive-keyring.gpg.
+- Memindahkan file keyring ke direktori /etc/apt/trusted.gpg.d/, sehingga dapat digunakan oleh sistem untuk memverifikasi paket Docker yang akan diinstal.
+
 > Add the docker repository and install docker
 
 ```bash
@@ -38,6 +45,17 @@ sudo apt install git wget curl socat -y
 sudo apt install -y docker-ce
 
 ```
+**Penjelasan**
+- Menambahkan repository resmi Docker ke dalam daftar repository Ubuntu.
+- $(lsb_release -cs) secara otomatis mengisi dengan nama kode Ubuntu yang digunakan (misalnya, jammy untuk Ubuntu 22.04).
+- stable → Menggunakan versi stabil dari Docker.
+- Memperbarui daftar paket untuk memastikan bahwa sistem mengenali repository Docker yang baru ditambahkan.
+- Menginstal beberapa alat bantu yang sering digunakan:
+     - git → Untuk mengelola kode sumber.
+     - wget → Untuk mengunduh file dari internet.
+     - curl → Untuk melakukan permintaan HTTP.
+     - socat → Digunakan untuk komunikasi jaringan.
+- Menginstal Docker Community Edition (docker-ce), yang merupakan versi gratis dari Docker.
 
 ### cri-dockerd Installation
 
